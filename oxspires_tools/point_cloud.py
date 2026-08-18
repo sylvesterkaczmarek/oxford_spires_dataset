@@ -68,7 +68,7 @@ def read_pcd_with_viewpoint(file_path: str):
         while True:
             line = file.readline().decode("utf-8").strip()
             if line.startswith("VIEWPOINT"):
-                viewpoint = line.split()[1:]  # x y z qw qx qy qz
+                viewpoint = [float(value) for value in line.split()[1:]]  # x y z qw qx qy qz
                 xyz = viewpoint[:3]
                 quat_wxyz = viewpoint[3:]
                 quat_xyzw = quat_wxyz[1:] + [quat_wxyz[0]]
